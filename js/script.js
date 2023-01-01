@@ -32,3 +32,35 @@ class Person {
         return this.#dni + ": " + this.#name + " " + this.#birth;
     }
 }
+
+/**
+ * Clase Student que hereda de Person que permite crear estudiantes.
+ */
+class Student extends Person {
+    // Campos privados:
+    #degree;
+    #grade;
+    constructor(name, dni, birth, degree, grade) {
+        super(name, dni, birth);    // Llamamos al superconstructor.
+
+        // El constructor se debe de invocar con new:
+        if(!new.target) throw new InvalidAccessConstructorException();
+
+        // Validación de campos:
+        if(degree !== "bachelor" || degree !== "vocacional" || degree !== "others")
+            throw new InvalidDegreeException();
+        
+        grade = +grade; // Convertimos la nota media a number.
+        if(!grade || grade <= 0 || Number.isNaN(grade))
+            throw new EmptyValueException(grade);
+
+        this.#degree = degree;
+        this.#grade = grade;
+    }
+
+    toString() {
+        super.toString() 
+        + " Modalidad de estudios: " + this.degree + " "
+        + "Nota media: " + this.#grade;
+    }
+}
