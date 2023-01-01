@@ -13,3 +13,26 @@ class BaseException extends Error {
     }
   }
 }
+
+/**
+ * Clase de excepción que genera un error cada vez que
+ * llamamos a un constructor sin el operador new.
+ */
+class InvalidAccessConstructorException extends BaseException {
+  constructor(fileName, lineNumber) {
+    super("El constructor se debe de invocar con new.", fileName, lineNumber);
+    this.name = "InvalidAccessConstructorException";
+  }
+}
+
+/**
+ * Clase de excepción que genera un error cada vez que intentamos
+ * instanciar una clase abstracta.
+ */
+class AbstractClassException extends BaseException {
+  constructor(className, fileName, lineNumber) {
+    super(`La clase ${className} es abstracta.`, fileName, lineNumber);
+    this.className = className;
+    this.name = "AbstractClassException";
+  }
+}
