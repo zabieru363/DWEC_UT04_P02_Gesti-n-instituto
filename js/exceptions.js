@@ -36,3 +36,11 @@ class AbstractClassException extends BaseException {
     this.name = "AbstractClassException";
   }
 }
+
+class EmptyValueException extends BaseException {
+  constructor(param, fileName, lineNumber) {
+    super("El campo  " + param + " no puede estar vacío.", fileName, lineNumber);
+    this.param = param;
+    this.name = "EmptyValueException";
+  }
+}

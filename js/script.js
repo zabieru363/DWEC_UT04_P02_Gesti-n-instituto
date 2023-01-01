@@ -13,6 +13,10 @@ class Person {
     constructor(name, dni, birth) {
         // Hacer que la clase sea abstracta:
         if(new.target === Person) throw new AbstractClassException("Person");
+        // Validación de campos de la clase:
+        if(!name) throw new EmptyValueException();
+        if(!dni) throw new EmptyValueException();
+        if(!birth) throw new EmptyValueException();
 
         this.#name = name;
         this.#dni = dni;
@@ -21,6 +25,6 @@ class Person {
 
     // Métodos del objeto:
     toString() {
-        return this.#dni + ": " + this.name + " " + this.birth;
+        return this.#dni + ": " + this.#name + " " + this.#birth;
     }
 }
