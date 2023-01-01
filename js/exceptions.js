@@ -37,6 +37,10 @@ class AbstractClassException extends BaseException {
   }
 }
 
+/**
+ * Clase de excepción que genera un error si un campo o
+ * parametro está vacío.
+ */
 class EmptyValueException extends BaseException {
   constructor(param, fileName, lineNumber) {
     super("El campo  " + param + " no puede estar vacío.", fileName, lineNumber);
@@ -44,3 +48,13 @@ class EmptyValueException extends BaseException {
     this.name = "EmptyValueException";
   }
 }
+
+/**
+ * Clase de excepción que genera un error si el DNI no es válido.
+ */
+class InvalidDNIException extends BaseException {
+    constructor(fileName, lineNumber) {
+      super("El DNI no es válido.", fileName, lineNumber);
+      this.name = "EmptyValueException";
+    }
+  }
