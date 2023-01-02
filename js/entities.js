@@ -63,12 +63,31 @@ class Student extends Person {
         this.#grade = grade;
     }
 
+    set degree(value) {
+        if(value !== "bachelor" && value !== "vocacional" && value !== "others") 
+            throw new InvalidDegreeException();
+        
+        this.#degree = value;
+    }
+
+    set grade(value) {
+        value = Math.trunc(Number.parseFloat(value));
+        if(!value || value <= 0 || Number.isNaN(value))
+            throw new EmptyValueException(value);
+
+        this.#grade = value;
+    }
+
     toString() {
         return super.toString() 
         + " Modalidad de estudios: " + this.#degree
         + " Nota media: " + this.#grade;
     }
 }
+// Hacemos que estas propiedades sean enumerables.
+Object.defineProperty(Student.prototype, "degree", {enumerable: true});
+Object.defineProperty(Student.prototype, "grade", {enumerable: true});
+
 /**
  * Clase Professor que hereda de Person. Es una clase sin
  * funcionalidad nueva ya que obtiene todo lo que necesita
