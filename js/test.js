@@ -19,7 +19,7 @@
         const s = new Student("05722054E", new Date(2000, 8, 6), "vocacional", 7);
         console.log(s);
     }catch(error) {
-        console.error(error);
+        console.error(error);   // ! El parametro name no puede estar vacío.
     }
 
     // Si el DNI no es válido arroja un error:
@@ -27,7 +27,7 @@
         const s1 = new Student("Javier", "aaaaaa", new Date(2000, 8, 6), "vocacional", 7);
         console.log(s1);
     }catch(error) {
-        console.error(error);
+        console.error(error);   // ! El DNI no es válido.
     }
     
     // Solo se pueden elegir 3 modalidades de estudios:
@@ -35,7 +35,7 @@
         const s2 = new Student("Javier", "05722054E", new Date(2000, 8, 6), "unknown", 7);
         console.log(s2);
     }catch(error) {
-        console.error(error);
+        console.error(error);   // ! La modalidad de estudios solo puede ser bachelor, vocacional o others.
     }
 
     // Usando el método toString de la clase Student:
