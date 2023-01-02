@@ -71,4 +71,13 @@
     // * CREANDO UN CURSO
 
     const c1 = new Course("DWEC", 20, professor);
+    console.log(c1);
+    
+    // Si el objeto no es un profesor.
+    
+    try {
+        const c1 = new Course("DWEC", 20, student);
+    }catch(error) {
+        console.error(error);   // ! El objeto que se está pasado no es un profesor.
+    }
 })();
