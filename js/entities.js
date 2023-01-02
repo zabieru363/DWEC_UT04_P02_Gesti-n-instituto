@@ -121,7 +121,7 @@ class Course {
         if(!tutor) throw new EmptyValueException(tutor);
 
         // Comprobando que tutor sea un profesor:
-        if(!tutor.name || !tutor.dni || !tutor.birth) throw new TutorException();
+        if(!(tutor instanceof Professor)) throw new TutorException();
         
         this.#name = name;
         this.#students = students;
