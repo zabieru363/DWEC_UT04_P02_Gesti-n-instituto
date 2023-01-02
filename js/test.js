@@ -53,6 +53,13 @@
     // Cambiando grade.
     student.grade = 8.5;
     console.log(student.toString());
+    
+    // Comprobando el rango de la nota media:
+    try {
+        student.grade = 120;
+    }catch(error) {
+        console.error(error);   // ! Nota media no válida.
+    }
 
     // Creando objeto Professor:
     const professor = new Professor("Pablo", "12345678A", new Date(1990, 3, 1));
