@@ -36,6 +36,7 @@ class Person {
         return this.#dni + ": " + this.#name + " " + this.#birth;
     }
 }
+Object.defineProperty(Person.prototype, "name", {enumerable: true});    // Hacemos que el setter sea enumerable.
 
 /**
  * Clase Student que hereda de Person que permite crear estudiantes.
