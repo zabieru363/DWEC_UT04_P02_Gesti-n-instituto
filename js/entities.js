@@ -27,6 +27,10 @@ class Person {
         this.#birth = birth;
     }
 
+    set name(value) {   // Hacemos que el nombre se pueda cambiar.
+        this.#name = value;
+    }
+
     // Métodos del objeto:
     toString() {
         return this.#dni + ": " + this.#name + " " + this.#birth;
