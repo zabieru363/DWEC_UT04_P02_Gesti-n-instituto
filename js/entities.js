@@ -47,10 +47,6 @@ class Student extends Person {
         if(!new.target) throw new InvalidAccessConstructorException();
 
         // Validación de campos:
-        if(!/\d{8}[A-Z]/.test(dni)) throw InvalidDNIException();
-        if(!name) throw new EmptyValueException();
-        if(!dni) throw new EmptyValueException();
-        if(!birth) throw new EmptyValueException();
         if(degree !== "bachelor" && degree !== "vocacional" && degree !== "others")
             throw new InvalidDegreeException();
         
