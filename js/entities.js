@@ -54,6 +54,8 @@ class Student extends Person {
         if(!grade || grade <= 0 || Number.isNaN(grade))
             throw new EmptyValueException(grade);
 
+        if(grade <= 0 || grade > 10) throw InvalidGradeException();
+
         this.#degree = degree;
         this.#grade = grade;
     }
@@ -69,6 +71,8 @@ class Student extends Person {
         value = Math.trunc(Number.parseFloat(value));
         if(!value || value <= 0 || Number.isNaN(value))
             throw new EmptyValueException(value);
+        
+        if(value <= 0 || value > 10) throw InvalidGradeException();
 
         this.#grade = value;
     }

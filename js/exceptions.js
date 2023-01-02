@@ -55,7 +55,7 @@ class EmptyValueException extends BaseException {
 class InvalidDNIException extends BaseException {
     constructor(fileName, lineNumber) {
       super("El DNI no es válido.", fileName, lineNumber);
-      this.name = "EmptyValueException";
+      this.name = "InvalidDNIException";
     }
 }
 
@@ -65,6 +65,16 @@ class InvalidDNIException extends BaseException {
 class InvalidDegreeException extends BaseException {
     constructor(fileName, lineNumber) {
       super("La modalidad de estudios solo puede ser bachelor, vocacional o others.", fileName, lineNumber);
-      this.name = "EmptyValueException";
+      this.name = "InvalidDegreeException";
     }
+}
+
+/**
+ * Clase de excepción que genera un error si el degree no es válido.
+ */
+class InvalidGradeException extends BaseException {
+  constructor(fileName, lineNumber) {
+    super("La nota media no es válida.", fileName, lineNumber);
+    this.name = "InvalidGradeException";
+  }
 }
