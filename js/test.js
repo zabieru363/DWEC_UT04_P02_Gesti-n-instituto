@@ -10,7 +10,7 @@
         console.error(error);   // ! La clase Person es abstracta.
     }
 
-    // Creando objeto Student:
+    // * CREANDO OBJETO STUDENT:
     const student = new Student("Javier", "05722054E", new Date(2000, 8, 6), "vocacional", 7);
     console.log(student);
 
@@ -61,10 +61,14 @@
         console.error(error);   // ! Nota media no válida.
     }
 
-    // Creando objeto Professor:
+    // * CREANDO OBJETO PROFESSOR:
     const professor = new Professor("Pablo", "12345678A", new Date(1990, 3, 1));
     console.log(professor);
 
     professor.name = "Jose Antonio";
     console.log(professor.toString());
+
+    // * CREANDO UN CURSO
+
+    const c1 = new Course("DWEC", 20, professor);
 })();
