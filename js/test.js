@@ -37,4 +37,7 @@
     }catch(error) {
         console.error(error);
     }
+
+    // Usando el método toString de la clase Student:
+    console.log(student.toString());
 })();
