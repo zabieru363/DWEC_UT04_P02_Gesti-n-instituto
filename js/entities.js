@@ -47,7 +47,7 @@ class Student extends Person {
         if(!new.target) throw new InvalidAccessConstructorException();
 
         // Validación de campos:
-        if(degree !== "bachelor" || degree !== "vocacional" || degree !== "others")
+        if(degree !== "bachelor" && degree !== "vocacional" && degree !== "others")
             throw new InvalidDegreeException();
         
         grade = Math.trunc(Number.parseFloat(grade)); // Convertimos la nota media a number.
