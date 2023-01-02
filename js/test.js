@@ -16,7 +16,7 @@
 
     // Si el DNI no es válido arroja un error:
     try {
-        const s1 = new Student("Javier", "05722", new Date(2000, 8, 6), "others", 7);
+        const s1 = new Student("Javier", "aaaaaa", new Date(2000, 8, 6), "vocacional", 7);
         console.log(s1);
     }catch(error) {
         console.error(error);
