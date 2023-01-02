@@ -59,9 +59,9 @@ class Student extends Person {
     }
 
     toString() {
-        super.toString() 
-        + " Modalidad de estudios: " + this.#degree + " "
-        + "Nota media: " + this.#grade;
+        return super.toString() 
+        + " Modalidad de estudios: " + this.#degree
+        + " Nota media: " + this.#grade;
     }
 }
 /**
