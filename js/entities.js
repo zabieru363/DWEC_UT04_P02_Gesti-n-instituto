@@ -20,7 +20,7 @@ class Person {
         if(!birth) throw new EmptyValueException();
 
         // Controlando que el dni sea válido:
-        if(!/\d{8}[A-Z]/.test("05722054E")) throw InvalidDNIException();
+        if(!/\d{8}[A-Z]/.test(dni)) throw InvalidDNIException();
 
         this.#name = name;
         this.#dni = dni;
