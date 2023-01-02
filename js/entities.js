@@ -102,3 +102,29 @@ class Professor extends Person {
         super(name, dni, birth);    // Llamamos al superconstructor.
     }
 }
+
+/**
+ * Clase Course que permite crear cursos en los que los
+ * estudiantes se pueden matricular.
+ * @author Javier López
+ * @version 1.0
+ */
+class Course {
+    // Campos privados:
+    #name;
+    #students;
+    #tutor;
+    constructor(name, students, tutor) {
+        // Validación de campos:
+        if(!name) throw new EmptyValueException(name);
+        if(!students) throw new EmptyValueException(students);
+        if(!tutor) throw new EmptyValueException(tutor);
+
+        // Comprobando que tutor sea un profesor:
+        if(!tutor.name || !tutor.dni || !tutor.birth) throw new TutorException();
+        
+        this.#name = name;
+        this.#students = students;
+        this.#tutor = tutor;
+    }
+}

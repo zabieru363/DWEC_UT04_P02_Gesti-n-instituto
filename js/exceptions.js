@@ -78,3 +78,13 @@ class InvalidGradeException extends BaseException {
     this.name = "InvalidGradeException";
   }
 }
+
+/**
+ * Clase de excepción que genera un error si el degree no es válido.
+ */
+class TutorException extends BaseException {
+  constructor(fileName, lineNumber) {
+    super("El objeto que se está pasando no es un profesor.", fileName, lineNumber);
+    this.name = "TutorException";
+  }
+}
