@@ -44,8 +44,20 @@
     // Cambiando el nombre
     student.name = "Antonio";
     console.log(student.toString());
+    student.name = "Javier";
+    
+    // Cambiando degree.
+    student.degree = "others";
+    console.log(student.toString());
+    
+    // Cambiando grade.
+    student.grade = 8.5;
+    console.log(student.toString());
 
     // Creando objeto Professor:
     const professor = new Professor("Pablo", "12345678A", new Date(1990, 3, 1));
     console.log(professor);
+
+    professor.name = "Jose Antonio";
+    console.log(professor.toString());
 })();
