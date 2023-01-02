@@ -14,6 +14,14 @@
     const student = new Student("Javier", "05722054E", new Date(2000, 8, 6), "vocacional", 7);
     console.log(student);
 
+    // Probando el caso de que falte algún campo:
+    try {
+        const s = new Student("05722054E", new Date(2000, 8, 6), "vocacional", 7);
+        console.log(s);
+    }catch(error) {
+        console.error(error);
+    }
+
     // Si el DNI no es válido arroja un error:
     try {
         const s1 = new Student("Javier", "aaaaaa", new Date(2000, 8, 6), "vocacional", 7);
