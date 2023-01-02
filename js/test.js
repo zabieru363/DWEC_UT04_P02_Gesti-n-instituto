@@ -40,6 +40,10 @@
 
     // Usando el método toString de la clase Student:
     console.log(student.toString());
+    
+    // Cambiando el nombre
+    student.name = "Antonio";
+    console.log(student.toString());
 
     // Creando objeto Professor:
     const professor = new Professor("Pablo", "12345678A", new Date(1990, 3, 1));
