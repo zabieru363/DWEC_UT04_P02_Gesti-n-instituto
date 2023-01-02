@@ -9,4 +9,8 @@
     }catch(error) {
         console.error(error);   // ! La clase Person es abstracta.
     }
+
+    // Creando objeto Student:
+    const student = new Student("Javier", "05722054E", new Date(2000, 8, 6), "others", 7);
+    console.log(student);
 })();
