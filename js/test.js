@@ -42,5 +42,6 @@
     console.log(student.toString());
 
     // Creando objeto Professor:
-    const professor = new Professor();
+    const professor = new Professor("Pablo", "12345678A", new Date(1990, 3, 1));
+    console.log(professor);
 })();
