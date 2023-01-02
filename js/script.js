@@ -50,7 +50,7 @@ class Student extends Person {
         if(degree !== "bachelor" || degree !== "vocacional" || degree !== "others")
             throw new InvalidDegreeException();
         
-        grade = +grade; // Convertimos la nota media a number.
+        grade = Math.trunc(Number.parseFloat(grade)); // Convertimos la nota media a number.
         if(!grade || grade <= 0 || Number.isNaN(grade))
             throw new EmptyValueException(grade);
 
@@ -60,7 +60,12 @@ class Student extends Person {
 
     toString() {
         super.toString() 
-        + " Modalidad de estudios: " + this.degree + " "
+        + " Modalidad de estudios: " + this.#degree + " "
         + "Nota media: " + this.#grade;
     }
 }
+/**
+ * Clase Professor que hereda de Person. Es una clase vacía
+ * que hereda todo lo necesario de Person.
+ */
+class Professor extends Person {}
