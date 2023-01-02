@@ -65,7 +65,12 @@ class Student extends Person {
     }
 }
 /**
- * Clase Professor que hereda de Person. Es una clase vacía
- * que hereda todo lo necesario de Person.
+ * Clase Professor que hereda de Person. Es una clase sin
+ * funcionalidad nueva ya que obtiene todo lo que necesita
+ * de Person.
  */
-class Professor extends Person {}
+class Professor extends Person {
+    constructor(name, dni, birth) {
+        super(name, dni, birth);    // Llamamos al superconstructor.
+    }
+}
