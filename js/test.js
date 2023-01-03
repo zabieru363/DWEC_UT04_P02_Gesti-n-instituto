@@ -121,4 +121,8 @@
     }catch(error) {
         console.error(error);   // ! El curso ya existe en el centro.
     }
+
+    // * UTILIZANDO EL MÉTODO DOAPPLICATION()
+
+    c1.doApplication(student);
 })();
