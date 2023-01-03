@@ -126,4 +126,7 @@
 
     console.log("Método doAplication");
     c1.doApplication(student);
+    console.log(c1.bachelorStudents);
+    console.log(c1.vocacionalStudents);
+    console.log(c1.others);
 })();
