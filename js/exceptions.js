@@ -88,3 +88,25 @@ class TutorException extends BaseException {
     this.name = "TutorException";
   }
 }
+
+/**
+ * Clase de excepción que genera un error si el objeto que se le pasa
+ * no es un objeto Student.
+ */
+class StudentException extends BaseException {
+  constructor(fileName, lineNumber) {
+    super("El objeto que se está pasando no es un estudiante.", fileName, lineNumber);
+    this.name = "StudentException";
+  }
+}
+
+/**
+ * Clase de excepción que genera un error si el estudiante ya está
+ * preinscrito en algún curso.
+ */
+class RegisteredStudentException extends BaseException {
+  constructor(fileName, lineNumber) {
+    super("El estudainte ya está preinscrito", fileName, lineNumber);
+    this.name = "RegisteredStudentException";
+  }
+}
