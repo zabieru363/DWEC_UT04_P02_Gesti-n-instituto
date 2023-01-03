@@ -104,4 +104,21 @@
     }catch(error) {
         console.error(error);   // ! El curso no está registrado en el centro.
     }
+    
+    highSchool.addCourse(c1);   // Volvemos a añadir el curso al objeto.
+
+    // Comprobando que el patrón Singleton funciona:
+    console.log("Singleton");
+
+    const self = new HighSchool("Copia");
+
+    console.log(highSchool === self);
+    console.log(Object.is(highSchool, self));
+    
+    // Esto ocurre porque se trata del mismo objeto.
+    try {
+        self.addCourse(c1);
+    }catch(error) {
+        console.error(error);   // ! El curso ya existe en el centro.
+    }
 })();
