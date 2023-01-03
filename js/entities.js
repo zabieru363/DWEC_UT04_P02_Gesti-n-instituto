@@ -96,6 +96,8 @@ Object.defineProperty(Student.prototype, "grade", {enumerable: true});
  * Clase Professor que hereda de Person. Es una clase sin
  * funcionalidad nueva ya que obtiene todo lo que necesita
  * de Person.
+ * @author Javier López
+ * @version 1.0
  */
 class Professor extends Person {
     constructor(name, dni, birth) {
