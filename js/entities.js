@@ -145,7 +145,7 @@ class HighSchool {
     #name;
     #courses = [];
     constructor(name) {
-        if(!HighSchool.instance) {  // Si la instancia ya existe.
+        if(!!HighSchool.instance) {  // Si la instancia ya existe.
             return HighSchool.instance; // Devolvemos la instancia del objeto
         }
 
