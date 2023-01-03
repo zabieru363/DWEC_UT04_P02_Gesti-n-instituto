@@ -102,9 +102,31 @@ class CourseExistsException extends BaseException {
 /**
  * Clase de excepción que genera un error si el curso no está registrado en el centro.
  */
-class NotRegisteredException extends BaseException {
+class NotRegisteredCourseException extends BaseException {
   constructor(fileName, lineNumber) {
     super("El curso no está registrado en el centro", fileName, lineNumber);
     this.name = "NotRegisteredException";
+  }
+}
+
+/**
+ * Clase de excepción que genera un error si el objeto que se le pasa
+ * no es un objeto Student.
+ */
+class StudentException extends BaseException {
+  constructor(fileName, lineNumber) {
+    super("El objeto que se está pasando no es un estudiante.", fileName, lineNumber);
+    this.name = "StudentException";
+  }
+}
+
+/**
+ * Clase de excepción que genera un error si el estudiante ya está
+ * preinscrito en algún curso.
+ */
+class RegisteredStudentException extends BaseException {
+  constructor(fileName, lineNumber) {
+    super("El estudainte ya está preinscrito", fileName, lineNumber);
+    this.name = "RegisteredStudentException";
   }
 }

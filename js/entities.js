@@ -116,6 +116,12 @@ class Course {
     #name;
     #students;
     #tutor;
+    // Listas para encuadrar a alumnos:
+    #bachelorStudents = [];
+    #vocacionalStudents = [];
+    #others = [];
+    #allStudents = [];  // Colección para guardar todos los estudiantes preinscritos.
+
     constructor(name, students, tutor) {
         // Validación de campos:
         if(!name) throw new EmptyValueException(name);
@@ -128,6 +134,38 @@ class Course {
         this.#name = name;
         this.#students = students;
         this.#tutor = tutor;
+    }
+
+    /**
+     * Método privado que permite ordenar una colección de estudiantes
+     * por el campo de la nota.
+     * @param {*} array La colección a ordenar.
+     */
+    #sortStudents(array) {
+        array.sort((a, b) => a.grade - b.grade);
+    }
+
+    doApplication(student) {
+        if(!(student instanceof Student)) throw new StudentException();
+
+        // Comprobando que el estudiante está en el curso:
+        const registered = this.#allStudents.some(elem => elem.name === student.name);
+        if(!registered) throw new RegisteredStudentException();
+
+        switch(student.degree) {
+          case "bachelor":
+            this.#bachelorStudents.push(student);
+            this.#sortStudents(this.#bachelorStudents);
+            break;
+          case "vocacional":
+            this.#vocacionalStudents.push(student);
+            this.#sortStudents(this.#vocacionalStudents);
+            break;
+          case "vocacional":
+            this.#others.push(student);
+            this.#sortStudents(this.#others);
+            break;
+        }
     }
 }
 
