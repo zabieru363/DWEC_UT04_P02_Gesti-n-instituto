@@ -139,18 +139,20 @@ class Course {
  * @version 1.0
  */
 class HighSchool {
-    static instance;
-
     // Campos privados:
     #name;
     #courses = [];
     constructor(name) {
-        if(!!HighSchool.instance) {  // Si la instancia ya existe.
-            return HighSchool.instance; // Devolvemos la instancia del objeto
+        if(!HighSchool.instance) {  // Si la instancia no existe.
+            HighSchool.instance = this; // Construimos el objeto.
+            this.#name = name;
         }
 
-        HighSchool.instance = this;
-        this.#name = name;
+        return HighSchool.instance; // Si ya existe simplemente lo devolvemos.
+    }
+
+    static getInstance() {
+        return new HighSchool();
     }
 
     addCourse(course) {
