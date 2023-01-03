@@ -150,6 +150,8 @@ class Course {
         const registered = this.#allStudents.some(elem => elem.name === student.name);
         if(registered) throw new RegisteredStudentException();
 
+        this.#allStudents.push(student);
+
         switch(student.degree) {
           case "bachelor":
             this.#bachelorStudents.push(student);
