@@ -83,7 +83,7 @@
 
     // * CREANDO OBJETO HIGHSCHOOL
 
-    const highSchool = new HighSchool("MaestreCalatrava");
+    const highSchool = HighSchool.getInstance("MaestreCalatrava");
 
     // Añadiendo un curso al centro:
     highSchool.addCourse(c1);
@@ -110,7 +110,7 @@
     // Comprobando que el patrón Singleton funciona:
     console.log("Singleton");
 
-    const self = new HighSchool("Copia");
+    const self = HighSchool.getInstance("Copia");
 
     console.log(highSchool === self);
     console.log(Object.is(highSchool, self));
