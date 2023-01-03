@@ -159,7 +159,7 @@ class Course {
             this.#vocacionalStudents.push(student);
             this.#sortStudents(this.#vocacionalStudents);
             break;
-          case "vocacional":
+          case "others":
             this.#others.push(student);
             this.#sortStudents(this.#others);
             break;
