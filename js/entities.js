@@ -150,7 +150,7 @@ class Course {
 
         // Comprobando que el estudiante está en el curso:
         const registered = this.#allStudents.some(elem => elem.name === student.name);
-        if(!registered) throw new RegisteredStudentException();
+        if(registered) throw new RegisteredStudentException();
 
         switch(student.degree) {
           case "bachelor":
