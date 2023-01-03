@@ -124,5 +124,6 @@
 
     // * UTILIZANDO EL MÉTODO DOAPPLICATION()
 
+    console.log("Método doAplication");
     c1.doApplication(student);
 })();
