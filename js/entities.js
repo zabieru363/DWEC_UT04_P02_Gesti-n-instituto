@@ -204,7 +204,7 @@ class HighSchool {
     removeCourse(course) {
         // Comprobamos si el curso no está registrado.
         const pos = this.#courses.findIndex(elem => elem.name === course.name);
-        if(pos === -1) throw new NotRegisteredException();
+        if(pos === -1) throw new NotRegisteredCourseException();
 
         this.#courses.splice(pos, 1);
     }
