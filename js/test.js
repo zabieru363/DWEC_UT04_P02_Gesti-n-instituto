@@ -80,4 +80,28 @@
     }catch(error) {
         console.error(error);   // ! El objeto que se está pasado no es un profesor.
     }
+
+    // * CREANDO OBJETO HIGHSCHOOL
+
+    const highSchool = new HighSchool("MaestreCalatrava");
+
+    // Añadiendo un curso al centro:
+    highSchool.addCourse(c1);
+    
+    // ¿ Que pasa si añadimos un curso que ya está en el highSchool?
+    try {
+        highSchool.addCourse(c1);
+    }catch(error) {
+        console.error(error);   // ! El curso ya existe en el centro.
+    }
+    
+    // Eliminando un curso:
+    highSchool.removeCourse(c1);
+    
+    // ¿Que pasa si eliminamos un curso que no está registrado en el centro?
+    try {
+        highSchool.removeCourse(c1);
+    }catch(error) {
+        console.error(error);   // ! El curso no está registrado en el centro.
+    }
 })();
