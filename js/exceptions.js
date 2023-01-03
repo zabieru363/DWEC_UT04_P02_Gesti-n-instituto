@@ -88,3 +88,23 @@ class TutorException extends BaseException {
     this.name = "TutorException";
   }
 }
+
+/**
+ * Clase de excepción que genera un error si el curso ya existe en el centro.
+ */
+class CourseExistsException extends BaseException {
+  constructor(fileName, lineNumber) {
+    super("El curso ya existe en el centro.", fileName, lineNumber);
+    this.name = "CourseExistsException";
+  }
+}
+
+/**
+ * Clase de excepción que genera un error si el curso no está registrado en el centro.
+ */
+class NotRegisteredException extends BaseException {
+  constructor(fileName, lineNumber) {
+    super("El curso no está registrado en el centro", fileName, lineNumber);
+    this.name = "NotRegisteredException";
+  }
+}

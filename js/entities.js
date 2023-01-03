@@ -130,3 +130,42 @@ class Course {
         this.#tutor = tutor;
     }
 }
+
+/**
+ * Clase HighSchool que representa el objeto principal de
+ * la aplicación. Este es un objeto único ya que implementa
+ * el patrón Singleton.
+ * @author Javier López
+ * @version 1.0
+ */
+class HighSchool {
+    static instance;
+
+    // Campos privados:
+    #name;
+    #courses = [];
+    constructor(name) {
+        if(!HighSchool.instance) {  // Si la instancia ya existe.
+            return HighSchool.instance; // Devolvemos la instancia del objeto
+        }
+
+        HighSchool.instance = this;
+        this.#name = name;
+    }
+
+    addCourse(course) {
+        // Comprobamos si el curso no está registrado.
+        const registered = this.#courses.some(elem => elem.name === course.name);
+        if(registered) throw new CourseExistsException();
+
+        this.#courses.push(course);
+    }
+
+    removeCourse(course) {
+        // Comprobamos si el curso no está registrado.
+        const pos = this.#courses.findIndex(elem => elem.name === course.name);
+        if(pos === -1) throw new NotRegisteredException();
+
+        this.#courses.splice(pos, 1);
+    }
+}
