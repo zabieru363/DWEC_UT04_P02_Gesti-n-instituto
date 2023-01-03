@@ -167,6 +167,18 @@ class Course {
             break;
         }
     }
+
+    get bachelorStudents() {
+        return this.#bachelorStudents;
+    }
+
+    get vocacionalStudents() {
+        return this.#vocacionalStudents;
+    }
+
+    get others() {
+        return this.#others;
+    }
 }
 
 /**
