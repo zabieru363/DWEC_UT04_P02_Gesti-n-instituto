@@ -170,4 +170,10 @@ class HighSchool {
 
         this.#courses.splice(pos, 1);
     }
+
+    * courses() {
+        for(const course of this.#courses) {
+            yield course.name;
+        }
+    }
 }
