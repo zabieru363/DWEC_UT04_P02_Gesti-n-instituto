@@ -131,4 +131,13 @@
     console.log(c1.bachelorStudents);
     console.log(c1.vocacionalStudents);
     console.log(c1.others);
+
+    // * UTILIZANDO ITERADOR DE CURSOS DE LA CLASE HIGHSCHOOL
+
+    console.log("Iterador de cursos");
+    const coursesIterator = highSchool.courses();
+
+    for(const course of coursesIterator) {
+        console.log(course);
+    }
 })();
