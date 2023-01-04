@@ -135,6 +135,14 @@ class Course {
     }
 
     /**
+     * Necesitamos hacer esta propiedad accesible ya que se
+     * utiliza en el método addCourse del objeto HighSchool.
+     */
+    get name() {
+        return this.#name;
+    }
+
+    /**
      * Método privado que permite ordenar una colección de estudiantes
      * por el campo de la nota.
      * @param {*} array La colección a ordenar.
@@ -180,3 +188,4 @@ class Course {
         return this.#others;
     }
 }
+Object.defineProperty(Course.prototype, "name", {enumerable: true});
