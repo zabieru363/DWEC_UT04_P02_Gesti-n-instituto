@@ -71,6 +71,7 @@
     // * CREANDO UN CURSO
 
     const c1 = new Course("DWEC", 20, professor);
+    const c2 = new Course("DWES", 25, professor);
     console.log(c1);
     
     // Si el objeto no es un profesor.
@@ -87,6 +88,7 @@
 
     // Añadiendo un curso al centro:
     highSchool.addCourse(c1);
+    highSchool.addCourse(c2);
     
     // ¿ Que pasa si añadimos un curso que ya está en el highSchool?
     try {
