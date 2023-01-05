@@ -38,21 +38,26 @@
         console.error(error);   // ! La modalidad de estudios solo puede ser bachelor, vocacional o others.
     }
 
+    // * PROPIEDADES DEL OBJETO STUDENT
+
+    console.log("Propiedades del objeto Student");
+
     // Usando el método toString de la clase Student:
     console.log(student.toString());
     
     // Cambiando el nombre
     student.name = "Antonio";
-    console.log(student.toString());
+    console.log(student.name);
     student.name = "Javier";
+    console.log(student.name);
     
     // Cambiando degree.
     student.degree = "others";
-    console.log(student.toString());
+    console.log(student.degree);
     
     // Cambiando grade.
     student.grade = 8.5;
-    console.log(student.toString());
+    console.log(student.grade); // Al convertirlo a number es un 8.
     
     // Comprobando el rango de la nota media:
     try {
@@ -61,12 +66,21 @@
         console.error(error);   // ! Nota media no válida.
     }
 
+    console.log(student.dni);   // El dni no puede ser cambiado.
+
     // * CREANDO OBJETO PROFESSOR:
+
+    console.log("Propiedades del objeto Professor.");
+
     const professor = new Professor("Pablo", "12345678A", new Date(1990, 3, 1));
     console.log(professor);
 
     professor.name = "Jose Antonio";
-    console.log(professor.toString());
+    console.log(professor.name);
+    professor.name = "Pablo";
+    console.log(professor.name);
+    
+    console.log(professor.dni);
 
     // * CREANDO UN CURSO
 
@@ -82,15 +96,23 @@
         console.error(error);   // ! El objeto que se está pasado no es un profesor.
     }
 
-    // * CREANDO OBJETO HIGHSCHOOL
+    // * PROPIEDADES DEL OBJETO COURSE.
+
+    console.log("Propiedades del objeto course");
+
+    console.log(c1.name);   // Solo hice accesible name porque me pareció necesario.
+
+    // * AÑADIENDO CURSOS A HIGHSCHOOL
+
+    console.log("Objeto HighSchool");
 
     const highSchool = HighSchool.getInstance("MaestreCalatrava");
 
-    // Añadiendo un curso al centro:
+    // Añadiendo cursos al centro:
     highSchool.addCourse(c1);
     highSchool.addCourse(c2);
     
-    // ¿ Que pasa si añadimos un curso que ya está en el highSchool?
+    // ¿Que pasa si añadimos un curso que ya está en el highSchool?
     try {
         highSchool.addCourse(c1);
     }catch(error) {
@@ -109,8 +131,9 @@
     
     highSchool.addCourse(c1);   // Volvemos a añadir el curso al objeto.
 
-    // Comprobando que el patrón Singleton funciona:
-    console.log("Singleton");
+    // * EL OBJETO HIGHSCHOOL ES ÚNICO.
+
+    console.log("Probando que el Singleton funciona.");
 
     const self = HighSchool.getInstance("Copia");
 
@@ -126,8 +149,12 @@
 
     // * UTILIZANDO EL MÉTODO DOAPPLICATION()
 
-    console.log("Método doAplication");
+    console.log("Añadir alumnos que aplican a un curso mediante doApplication().");
     c1.doApplication(student);  // Lo encuadra en la lista de others.
+    c1.doApplication(new Student("Fernando", "24681077B", new Date(2001, 5, 23), "bachelor", 5.4));  // Lo encuadra en la lista de bachelor.
+    c1.doApplication(new Student("Luis", "43683077J", new Date(2000, 8, 13), "vocacional", 7.5));  // Lo encuadra en la lista de vocacional.
+    c1.doApplication(new Student("Mary", "23613266L", new Date(2002, 4, 28), "others", 9.5));  // Lo encuadra en la lista de others.
+
     console.log(c1.bachelorStudents);
     console.log(c1.vocacionalStudents);
     console.log(c1.others);
@@ -150,17 +177,18 @@
 
     // * UTILIZANDO ITERADOR DE CURSOS DE LA CLASE HIGHSCHOOL
 
-    console.log("Iterador de cursos");
+    console.log("Recorrer objetos Course de HighSchool");
 
     const c3 = new Course("DIW", 20, professor);
     const c4 = new Course("DAW", 20, professor);
 
+    // Añado más cursos para probar el iterador
     highSchool.addCourse(c3);
     highSchool.addCourse(c4);
 
     const coursesIterator = highSchool.courses();
 
     for(const course of coursesIterator) {
-        console.log(course);
+        console.log(course);    // Imprime solo el nombre de cada cursos que es en principio lo que interesa.
     }
 })();
