@@ -151,10 +151,19 @@ class HighSchool {
         return HighSchool.instance; // Si ya existe simplemente lo devolvemos.
     }
 
+    /**
+     * Método estático que devuelve la instancia única del objeto.
+     * @returns La instancia del objeto.
+     */
     static getInstance() {
         return new HighSchool();
     }
 
+    /**
+     * Añade un curso al instituto. Si está registrado genera
+     * una excepción.
+     * @param {*} course El curso a añadir al instituto.
+     */
     addCourse(course) {
         // Comprobamos si el curso no está registrado.
         const registered = this.#courses.some(elem => elem.name === course.name);
@@ -163,6 +172,11 @@ class HighSchool {
         this.#courses.push(course);
     }
 
+    /**
+     * Elimina un curso del instituto. Si no está registrado
+     * genera una excepción.
+     * @param {*} course El curso a eliminar.
+     */
     removeCourse(course) {
         // Comprobamos si el curso no está registrado.
         const pos = this.#courses.findIndex(elem => elem.name === course.name);
@@ -171,6 +185,10 @@ class HighSchool {
         this.#courses.splice(pos, 1);
     }
 
+    /**
+     * Método que devuelve un iterador con todos los cursos.
+     * @returns Un objeto iterable que permite recuperar todos los cursos.
+     */
     courses() {
         let array = this.#courses;
 
@@ -188,6 +206,8 @@ class HighSchool {
                 }
             }
         }
+
+        // Esta es la forma de hacerlo con un generador.
         // for(const course of this.#courses) {
         //     yield course.name;
         // }
