@@ -166,6 +166,15 @@ class Course {
         array.sort((b, a) => a.grade - b.grade);
     }
 
+    /**
+     * Recibe la aplicación de un alumno para el curso. El
+     * alumno quedará encuadrado en una lista en
+     * función de sus estudios previos y ordenado por la nota.
+     * El alumno no puede estar preinscrito en el curso
+     * previamente. En caso de estarlo el método lanzará
+     * una excepción.
+     * @param {*} student El estudiante a matricular en el curso.
+     */
     doApplication(student) {
         if(!(student instanceof Student)) throw new StudentException();
 
@@ -193,6 +202,10 @@ class Course {
         }
     }
 
+    /**
+     * Muestra los alumnos admitidos de un curso.
+     * @returns Un objeto iterable que permite recuperar los alumnos admitidos de un curso.
+     */
     admittedStudents() {
         const admittedStudents = this.#allStudents.filter(student => student.grade >= 5);   // Si su nota es >= 5 está admitido.
 
@@ -211,6 +224,8 @@ class Course {
             }
         }
     }
+
+    // Hacemos accesibles las listas para probar que se añaden donde deberian.
 
     get bachelorStudents() {
         return this.#bachelorStudents;
