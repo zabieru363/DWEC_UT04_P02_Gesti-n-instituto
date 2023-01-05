@@ -38,6 +38,7 @@ class Person {
  */
 class Student extends Person {
     // Campos privados:
+    #name;
     #degree;
     #grade;
     constructor(name, dni, birth, degree, grade) {
@@ -56,6 +57,7 @@ class Student extends Person {
 
         if(grade <= 0 || grade > 10) throw InvalidGradeException();
 
+        this.#name = name;
         this.#degree = degree;
         this.#grade = grade;
     }
