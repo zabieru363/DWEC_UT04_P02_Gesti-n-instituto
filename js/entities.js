@@ -143,6 +143,21 @@ class Course {
     }
 
     /**
+     * Getter para obtener el nombre del tutor.
+     */
+    get tutor() {
+        return this.#tutor.name;
+    }
+
+    /**
+     * Setter para cambiar el tutor.
+     */
+    set tutor(value) {
+        if(!(value instanceof Professor)) throw new TutorException();
+        this.#tutor = value;
+    }
+
+    /**
      * Método privado que permite ordenar una colección de estudiantes
      * por el campo de la nota.
      * @param {*} array La colección a ordenar.
