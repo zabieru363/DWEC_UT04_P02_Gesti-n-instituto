@@ -232,9 +232,25 @@ class HighSchool {
         this.#courses.splice(pos, 1);
     }
 
-    * courses() {
-        for(const course of this.#courses) {
-            yield course.name;
+    courses() {
+        let array = this.#courses;
+
+        // Devolvemos un objeto iterable:
+        return {
+            [Symbol.iterator]() {
+                let nextIndex = 0;
+
+                return {
+                    next: function() {
+                        return nextIndex < array.length ?
+                            { value: array[nextIndex++].name, done: false } :
+                            { done: true };
+                    }
+                }
+            }
         }
+        // for(const course of this.#courses) {
+        //     yield course.name;
+        // }
     }
 }
