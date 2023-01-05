@@ -62,9 +62,12 @@ Object.defineProperty(Person.prototype, "dni", {enumerable: true});
 
 /**
  * Clase Student que hereda de Person que permite crear estudiantes.
+ * @author Javier López
+ * @version 1.0
  */
 class Student extends Person {
     // Campos privados:
+    #name;
     #degree;
     #grade;
     constructor(name, dni, birth, degree, grade) {
@@ -83,10 +86,21 @@ class Student extends Person {
 
         if(grade <= 0 || grade > 10) throw InvalidGradeException();
 
+        this.#name = name;
         this.#degree = degree;
         this.#grade = grade;
     }
 
+    /**
+     * Getter que permite recuperar la propiedad degree.
+     */
+    get degree() {
+        return this.#degree;
+    }
+
+    /**
+     * Setter que permite establecer un nuevo valor para degree.
+     */
     set degree(value) {
         if(value !== "bachelor" && value !== "vocacional" && value !== "others") 
             throw new InvalidDegreeException();
@@ -94,6 +108,16 @@ class Student extends Person {
         this.#degree = value;
     }
 
+    /**
+     * Getter que permite recuperar la propiedad grade.
+     */
+    get grade() {
+        return this.#grade;
+    }
+
+    /**
+     * Setter que permite establecer un nuevo valor para grade.
+     */
     set grade(value) {
         value = Math.trunc(Number.parseFloat(value));
         if(!value || value <= 0 || Number.isNaN(value))
@@ -104,6 +128,10 @@ class Student extends Person {
         this.#grade = value;
     }
 
+    /**
+     * Imprime un objeto estudiante en formato cadena.
+     * @returns Una cadena con los datos del objeto estudiante.
+     */
     toString() {
         return super.toString() 
         + " Modalidad de estudios: " + this.#degree
