@@ -27,6 +27,10 @@ class Person {
         this.#birth = birth;
     }
 
+    get name() {
+        return this.#name;
+    }
+
     set name(value) {   // Hacemos que el nombre se pueda cambiar.
         this.#name = value;
     }
