@@ -159,6 +159,8 @@
     c1.doApplication(new Student("Fernando", "24681077B", new Date(2001, 5, 23), "bachelor", 5.4));  // Lo encuadra en la lista de bachelor.
     c1.doApplication(new Student("Luis", "43683077J", new Date(2000, 8, 13), "vocacional", 7.5));  // Lo encuadra en la lista de vocacional.
     c1.doApplication(new Student("Mary", "23613266L", new Date(2002, 4, 28), "others", 9.5));  // Lo encuadra en la lista de others.
+    // Un alumno también que no esté admitido, para probar:
+    c1.doApplication(new Student("John", "63313966S", new Date(2002, 4, 28), "bachelor", 4.5));  // Lo encuadra en la lista de bachelor.
 
     console.log(c1.bachelorStudents);
     console.log(c1.vocacionalStudents);
@@ -195,5 +197,16 @@
 
     for(const course of coursesIterator) {
         console.log(course);    // Imprime solo el nombre de cada cursos que es en principio lo que interesa.
+    }
+
+    // * PUBLICACIÓN DE LISTA DE ADMITIDOS
+
+    console.log("Recuperar alumnos admitidos de un curso");
+
+    const admittedStudents = c1.admittedStudents();
+
+    // Aparecen todos menos John que no estaría admitido.
+    for(const student of admittedStudents) {
+        console.log(student.name);  // Recuperamos la propiedad nombre de cada uno (en principio podríamos sacar el objeto entero)
     }
 })();
