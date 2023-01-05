@@ -200,7 +200,7 @@ class Course {
      * @param {*} array La colección a ordenar.
      */
     #sortStudents(array) {
-        array.sort((a, b) => a.grade - b.grade);
+        array.sort((b, a) => a.grade - b.grade);
     }
 
     doApplication(student) {
