@@ -100,7 +100,12 @@
 
     console.log("Propiedades del objeto course");
 
-    console.log(c1.name);   // Solo hice accesible name porque me pareció necesario.
+    console.log(c1.name);
+    console.log(c1.tutor);
+    
+    // Cambiando el tutor
+    c1.tutor = new Professor("Alberto", "12348799O", new Date(1995, 2, 10));
+    console.log(c1.tutor);
 
     // * AÑADIENDO CURSOS A HIGHSCHOOL
 
