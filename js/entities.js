@@ -155,7 +155,7 @@ class Course {
         if(!(student instanceof Student)) throw new StudentException();
 
         // Comprobando que el estudiante está en el curso:
-        const registered = this.#allStudents.some(elem => elem.name === student.name);
+        const registered = this.#allStudents.some(elem => elem.dni === student.dni);
         if(registered) throw new RegisteredStudentException();
 
         this.#allStudents.push(student);
