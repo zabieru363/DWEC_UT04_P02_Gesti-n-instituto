@@ -225,6 +225,8 @@ class Course {
         const registered = this.#allStudents.some(elem => elem.dni === student.dni);
         if(registered) throw new RegisteredStudentException();
 
+        // También hay que controlar si el curso está lleno y no puede admitir más alumnos.
+        if(this.#allStudents.length === this.#students) throw new CourseIsFullException();
         this.#allStudents.push(student);
 
         switch(student.degree) {
@@ -240,6 +242,25 @@ class Course {
             this.#others.push(student);
             this.#sortStudents(this.#others);
             break;
+        }
+    }
+
+    admittedStudents() {
+        const admittedStudents = this.#allStudents.filter(student => student.grade >= 5);   // Si su nota es >= 5 está admitido.
+
+        // Ahora devolvemos un objeto iterable que permita recuperar los alumnos admitidos:
+        return {
+            [Symbol.iterator]() {
+                let nextIndex = 0;
+
+                return {
+                    next: function() {
+                        return nextIndex < admittedStudents.length ?
+                            { value: admittedStudents[nextIndex++], done: false } :
+                            { done: true };
+                    }
+                }
+            }
         }
     }
 

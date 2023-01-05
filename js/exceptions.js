@@ -130,3 +130,14 @@ class RegisteredStudentException extends BaseException {
     this.name = "RegisteredStudentException";
   }
 }
+
+/**
+ * Clase de excepción que genera un error si el curso no
+ * puede admitir más alumnos.
+ */
+class CourseIsFullException extends BaseException {
+  constructor(fileName, lineNumber) {
+    super("El curso ya está lleno.", fileName, lineNumber);
+    this.name = "CourseIsFullException";
+  }
+}
