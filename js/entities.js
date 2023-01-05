@@ -27,20 +27,38 @@ class Person {
         this.#birth = birth;
     }
 
+    /**
+     * Getter que permite obtener la propiedad name.
+     */
     get name() {
         return this.#name;
     }
 
-    set name(value) {   // Hacemos que el nombre se pueda cambiar.
+    /**
+     * Hacemos que el nombre se pueda cambiar.
+     */
+    set name(value) {
         this.#name = value;
     }
 
-    // Métodos del objeto:
+    /**
+     * Getter que permite obtener la propiedad dni.
+     */
+    get dni() {
+        return this.#dni;
+    }
+
+    /**
+     * Método que imprime el objeto en formato cadena.
+     * @returns Una cadena con los datos de la persona.
+     */
     toString() {
         return this.#dni + ": " + this.#name + " " + this.#birth;
     }
 }
-Object.defineProperty(Person.prototype, "name", {enumerable: true});    // Hacemos que el setter sea enumerable.
+// Hacemos que los getters sean enumerables.
+Object.defineProperty(Person.prototype, "name", {enumerable: true});
+Object.defineProperty(Person.prototype, "dni", {enumerable: true});
 
 /**
  * Clase Student que hereda de Person que permite crear estudiantes.
