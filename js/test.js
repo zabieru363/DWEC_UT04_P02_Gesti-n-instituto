@@ -127,14 +127,37 @@
     // * UTILIZANDO EL MÉTODO DOAPPLICATION()
 
     console.log("Método doAplication");
-    c1.doApplication(student);
+    c1.doApplication(student);  // Lo encuadra en la lista de others.
     console.log(c1.bachelorStudents);
     console.log(c1.vocacionalStudents);
     console.log(c1.others);
 
+    // ¿Que ocurre si usamos un alumno que ya está matriculado?
+    try {
+        c1.doApplication(student);
+    }catch(error) {
+        console.error(error);   // ! El estudiante ya está preinscrito en el curso.
+    }
+
+    // Matriculando un estudiante en otro curso.
+    c2.doApplication(student);
+
+    try {
+        c2.doApplication(student);
+    }catch(error) {
+        console.error(error);   // ! El estudiante ya está preinscrito en el curso.
+    }
+
     // * UTILIZANDO ITERADOR DE CURSOS DE LA CLASE HIGHSCHOOL
 
     console.log("Iterador de cursos");
+
+    const c3 = new Course("DIW", 20, professor);
+    const c4 = new Course("DAW", 20, professor);
+
+    highSchool.addCourse(c3);
+    highSchool.addCourse(c4);
+
     const coursesIterator = highSchool.courses();
 
     for(const course of coursesIterator) {
