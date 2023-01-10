@@ -259,7 +259,26 @@ class Course {
      * @returns Un objeto iterable que permite recuperar los alumnos admitidos de un curso.
      */
     admittedStudents() {
-        const admittedStudents = this.#allStudents.filter(student => student.grade >= 5);   // Si su nota es >= 5 está admitido.
+        // 40% de los alumnos de bachillerato.
+        const bachelorStudentsLength = this.#students * 40 / 100;
+        // 40% de los alumnos de grado medio o superior.
+        const vocacionalStudentsLength = this.#students * 40 / 100;
+        // 20% de los alumnos con otro tipo de modalidad de estudios.
+        const othersStudentsLength = this.#students * 20 / 100;
+
+        const bachelor = this.#bachelorStudents.filter(student => student.grade >= 5);
+        const vocacional = this.#vocacionalStudents.filter(student => student.grade >= 5);
+        const others = this.#others.filter(student => student.grade >= 5);
+
+        const list1 = new List(bachelor, bachelorStudentsLength);   // Almacena los alumnos admitidos de bachillerato.
+        const list2 = new List(vocacional, vocacionalStudentsLength);   // Almacena los alumnos admitidos de vocacional.
+        const list3 = new List(others, othersStudentsLength);   // Almacena los alumnos admitidos de others.
+
+        const admittedStudents = [];    // Aquí utilizo un array porque es el objeto iterable.
+
+        for(let i = 0; i < list1.capacity(); i++) admittedStudents.push(list1.get(i)); // Añadimos todos los alumnos admitidos de bachillerato.
+        for(let i = 0; i < list2.capacity(); i++) admittedStudents.push(list2.get(i)); // Añadimos todos los alumnos admitidos de vocacional.
+        for(let i = 0; i < list3.capacity(); i++) admittedStudents.push(list3.get(i)); // Añadimos todos los alumnos admitidos de others.
 
         // Ahora devolvemos un objeto iterable que permita recuperar los alumnos admitidos:
         return {
