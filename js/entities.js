@@ -131,85 +131,86 @@ class Course {
     }
 }
 
-/**
- * Clase HighSchool que representa el objeto principal de
- * la aplicación. Este es un objeto único ya que implementa
- * el patrón Singleton.
- * @author Javier López
- * @version 1.0
- */
-class HighSchool {
-    // Campos privados:
-    #name;
-    #courses = [];
-    constructor(name) {
-        if(!HighSchool.instance) {  // Si la instancia no existe.
-            HighSchool.instance = this; // Construimos el objeto.
-            this.#name = name;
-        }
+const HighSchoolSingleton = (function() {
+    let instantiated;
 
-        return HighSchool.instance; // Si ya existe simplemente lo devolvemos.
-    }
+    function init() {
+        /**
+         * Clase HighSchool que representa el objeto principal de
+         * la aplicación. Este es un objeto único ya que implementa
+         * el patrón Singleton.
+         * @author Javier López
+         * @version 1.0
+         */
+        class HighSchool {
+            // Campos privados:
+            #name;
+            #courses = [];
+            constructor(name = "Default") {
+                this.#name = name;
+            }
 
-    /**
-     * Método estático que devuelve la instancia única del objeto.
-     * @returns La instancia del objeto.
-     */
-    static getInstance() {
-        return new HighSchool();
-    }
+            /**
+             * Añade un curso al instituto. Si está registrado genera
+             * una excepción.
+             * @param {*} course El curso a añadir al instituto.
+             */
+            addCourse(course) {
+                // Comprobamos si el curso no está registrado.
+                const registered = this.#courses.some(elem => elem.name === course.name);
+                if(registered) throw new CourseExistsException();
 
-    /**
-     * Añade un curso al instituto. Si está registrado genera
-     * una excepción.
-     * @param {*} course El curso a añadir al instituto.
-     */
-    addCourse(course) {
-        // Comprobamos si el curso no está registrado.
-        const registered = this.#courses.some(elem => elem.name === course.name);
-        if(registered) throw new CourseExistsException();
+                this.#courses.push(course);
+            }
 
-        this.#courses.push(course);
-    }
+            /**
+             * Elimina un curso del instituto. Si no está registrado
+             * genera una excepción.
+             * @param {*} course El curso a eliminar.
+             */
+            removeCourse(course) {
+                // Comprobamos si el curso no está registrado.
+                const pos = this.#courses.findIndex(elem => elem.name === course.name);
+                if(pos === -1) throw new NotRegisteredCourseException();
 
-    /**
-     * Elimina un curso del instituto. Si no está registrado
-     * genera una excepción.
-     * @param {*} course El curso a eliminar.
-     */
-    removeCourse(course) {
-        // Comprobamos si el curso no está registrado.
-        const pos = this.#courses.findIndex(elem => elem.name === course.name);
-        if(pos === -1) throw new NotRegisteredCourseException();
+                this.#courses.splice(pos, 1);
+            }
 
-        this.#courses.splice(pos, 1);
-    }
+            /**
+             * Método que devuelve un iterador con todos los cursos.
+             * @returns Un objeto iterable que permite recuperar todos los cursos.
+             */
+            courses() {
+                let array = this.#courses;
 
-    /**
-     * Método que devuelve un iterador con todos los cursos.
-     * @returns Un objeto iterable que permite recuperar todos los cursos.
-     */
-    courses() {
-        let array = this.#courses;
-
-        // Devolvemos un objeto iterable:
-        return {
-            [Symbol.iterator]() {
-                let nextIndex = 0;
-
+                // Devolvemos un objeto iterable:
                 return {
-                    next: function() {
-                        return nextIndex < array.length ?
-                            { value: array[nextIndex++].name, done: false } :
-                            { done: true };
+                    [Symbol.iterator]() {
+                        let nextIndex = 0;
+
+                        return {
+                            next: function() {
+                                return nextIndex < array.length ?
+                                    { value: array[nextIndex++].name, done: false } :
+                                    { done: true };
+                            }
+                        }
                     }
                 }
+
+                // Esta es la forma de hacerlo con un generador.
+                // for(const course of this.#courses) {
+                //     yield course.name;
+                // }
             }
         }
-
-        // Esta es la forma de hacerlo con un generador.
-        // for(const course of this.#courses) {
-        //     yield course.name;
-        // }
+        return Object.freeze(new HighSchool());
     }
-}
+
+    return {
+        getInstance() {
+            if(!instantiated) instantiated = init();
+            return instantiated;
+        }
+    }
+})();
