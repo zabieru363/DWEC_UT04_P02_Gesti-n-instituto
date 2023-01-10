@@ -224,9 +224,20 @@ class Course {
 
         const admittedStudents = [];    // Aquí utilizo un array porque es el objeto iterable.
 
-        for(let i = 0; i < list1.capacity(); i++) admittedStudents.push(list1.get(i)); // Añadimos todos los alumnos admitidos de bachillerato.
-        for(let i = 0; i < list2.capacity(); i++) admittedStudents.push(list2.get(i)); // Añadimos todos los alumnos admitidos de vocacional.
-        for(let i = 0; i < list3.capacity(); i++) admittedStudents.push(list3.get(i)); // Añadimos todos los alumnos admitidos de others.
+        for(let i = 0; i < list1.capacity(); i++) {
+            if(typeof list1.get(i) !== "undefined")
+                admittedStudents.push(list1.get(i)); // Añadimos todos los alumnos admitidos de bachillerato.
+        }
+
+        for(let i = 0; i < list2.capacity(); i++) {
+            if(typeof list2.get(i) !== "undefined")
+                admittedStudents.push(list2.get(i)); // Añadimos todos los alumnos admitidos de vocacional.
+        }
+
+        for(let i = 0; i < list3.capacity(); i++) {
+            if(typeof list3.get(i) !== "undefined")
+                admittedStudents.push(list3.get(i)); // Añadimos todos los alumnos admitidos de others.
+        }
 
         // Ahora devolvemos un objeto iterable que permita recuperar los alumnos admitidos:
         return {
