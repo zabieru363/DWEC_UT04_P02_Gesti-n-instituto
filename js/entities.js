@@ -214,7 +214,15 @@ class Course {
         // 20% de los alumnos con otro tipo de modalidad de estudios.
         const othersStudentsLength = this.#students * 20 / 100;
 
-        const admittedStudents = this.#allStudents.filter(student => student.grade >= 5);   // Si su nota es >= 5 está admitido.
+        const list1 = new List(this.#bachelorStudents.filter(student => student.grade >= 5), bachelorStudentsLength);   // Almacena los alumnos admitidos de bachillerato.
+        const list2 = new List(this.#vocacionalStudents.filter(student => student.grade >= 5), vocacionalStudentsLength);   // Almacena los alumnos admitidos de vocacional.
+        const list3 = new List(this.#others.filter(student => student.grade >= 5), othersStudentsLength);   // Almacena los alumnos admitidos de others.
+
+        const admittedStudents = [];    // Aquí utilizo un array porque es el objeto iterable.
+
+        for(let i = 0; i < list1.capacity(); i++) admittedStudents.push(list1.get(i)); // Añadimos todos los alumnos admitidos de bachillerato.
+        for(let i = 0; i < list2.capacity(); i++) admittedStudents.push(list2.get(i)); // Añadimos todos los alumnos admitidos de vocacional.
+        for(let i = 0; i < list3.capacity(); i++) admittedStudents.push(list3.get(i)); // Añadimos todos los alumnos admitidos de others.
 
         // Ahora devolvemos un objeto iterable que permita recuperar los alumnos admitidos:
         return {
