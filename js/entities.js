@@ -207,6 +207,13 @@ class Course {
      * @returns Un objeto iterable que permite recuperar los alumnos admitidos de un curso.
      */
     admittedStudents() {
+        // 40% de los alumnos de bachillerato.
+        const bachelorStudentsLength = this.#students * 40 / 100;
+        // 40% de los alumnos de grado medio o superior.
+        const vocacionalStudentsLength = this.#students * 40 / 100;
+        // 20% de los alumnos con otro tipo de modalidad de estudios.
+        const othersStudentsLength = this.#students * 20 / 100;
+
         const admittedStudents = this.#allStudents.filter(student => student.grade >= 5);   // Si su nota es >= 5 está admitido.
 
         // Ahora devolvemos un objeto iterable que permita recuperar los alumnos admitidos:
