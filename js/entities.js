@@ -214,9 +214,9 @@ class Course {
         // 20% de los alumnos con otro tipo de modalidad de estudios.
         const othersStudentsLength = this.#students * 20 / 100;
 
-        const list1 = new List(this.#bachelorStudents.filter(student => student.grade >= 5), bachelorStudentsLength);   // Almacena los alumnos admitidos de bachillerato.
-        const list2 = new List(this.#vocacionalStudents.filter(student => student.grade >= 5), vocacionalStudentsLength);   // Almacena los alumnos admitidos de vocacional.
-        const list3 = new List(this.#others.filter(student => student.grade >= 5), othersStudentsLength);   // Almacena los alumnos admitidos de others.
+        const list1 = new List([...this.#bachelorStudents.filter(student => student.grade >= 5)], bachelorStudentsLength);   // Almacena los alumnos admitidos de bachillerato.
+        const list2 = new List([...this.#vocacionalStudents.filter(student => student.grade >= 5)], vocacionalStudentsLength);   // Almacena los alumnos admitidos de vocacional.
+        const list3 = new List([...this.#others.filter(student => student.grade >= 5)], othersStudentsLength);   // Almacena los alumnos admitidos de others.
 
         const admittedStudents = [];    // Aquí utilizo un array porque es el objeto iterable.
 
