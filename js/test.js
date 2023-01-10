@@ -111,7 +111,7 @@
 
     console.log("Objeto HighSchool");
 
-    const highSchool = HighSchool.getInstance("MaestreCalatrava");
+    const highSchool = HighSchoolSingleton.getInstance("MaestreCalatrava");
 
     // Añadiendo cursos al centro:
     highSchool.addCourse(c1);
@@ -140,7 +140,7 @@
 
     console.log("Probando que el Singleton funciona.");
 
-    const self = HighSchool.getInstance("Copia");
+    const self = HighSchoolSingleton.getInstance("Copia");
 
     console.log(highSchool === self);
     console.log(Object.is(highSchool, self));
